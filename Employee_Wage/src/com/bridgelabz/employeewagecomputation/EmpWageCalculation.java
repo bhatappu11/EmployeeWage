@@ -4,7 +4,19 @@ public class EmpWageCalculation {
 		public static final int IS_FULL_TIME = 2;
 		public static final int IS_PART_TIME = 1;
 		
-		public static void computeEmpWage(String companyName,int empRatePerHour,int numOfWorkingDays,int maxHrsInMonth) {
+		private final String companyName;
+		private final int empRatePerHour;
+		private final int numOfWorkingDays;
+		private final int maxHrsInMonth;
+		
+		
+		public EmpWageCalculation(String companyName,int empRatePerHour,int numOfWorkignDays,int maxHrsInMonth) {
+			this.companyName = companyName;
+			this.empRatePerHour = empRatePerHour;
+			this.numOfWorkingDays = numOfWorkignDays;
+			this.maxHrsInMonth = maxHrsInMonth;
+		}
+		public void computeEmpWage() {
 			int empHrs=0,totalEmpHrs=0, totalWorkingDays=0;
 			while(totalEmpHrs <= maxHrsInMonth && totalWorkingDays< numOfWorkingDays){
 				totalWorkingDays++;
@@ -28,8 +40,10 @@ public class EmpWageCalculation {
 		}
 		public static void main(String[] args){
 		System.out.println("Welcome to employee wage computation");
-		computeEmpWage("dMart",20,4,10);
-		computeEmpWage("wallmart",10,4,20);
+		EmpWageCalculation dMart = new EmpWageCalculation("D-Mart", 20, 10, 15);
+		EmpWageCalculation metro = new EmpWageCalculation("Metro", 25, 8, 12);
+		dMart.computeEmpWage();
+		metro.computeEmpWage();
 	}
 
 }
